@@ -115,11 +115,12 @@ async function createCard(movie){
     const durationEl = createHtmlElement ("p")
     const genderEl = createHtmlElement ("p")
     
-    cardEl.appendChild(titleEl)
     cardEl.appendChild(imageEl)
+    cardEl.appendChild(titleEl)    
+    cardEl.appendChild(genderEl)
     cardEl.appendChild(releaseDateEl)
     cardEl.appendChild(durationEl)
-    cardEl.appendChild(genderEl)
+    
 
     titleEl.textContent = title
     const IMAGE_BASE_URLMovie = `${IMAGE_BASE_URL}${poster_path}`

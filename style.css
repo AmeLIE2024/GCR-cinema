@@ -38,3 +38,18 @@ footer {
   background-color: black;
   width: 100%;
 }
+
+/*  ARTICLE / MOVIE CARD */
+
+article {
+    border: green solid;
+    margin: 5px;
+    display: flex;
+    
+    align-content: center;
+   width: 40%;
+}
+
+img {
+    width: 40%;
+}
