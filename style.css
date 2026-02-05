@@ -17,39 +17,81 @@ header {
   justify-content: space-between;
   padding: 10px 10px;
   color: white;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.212);
 }
 
 header a {
   color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: large;
+}
+#logo {
+color: rgb(240, 37, 37);
+text-shadow: 2px 2px 5px;
+font-size: xx-large;
+font-weight: bold;
 }
 
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url("./img/bgbody.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: whitesmoke;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 main {
   flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  text-align: center;
+  color: rgb(198, 193, 193);
 }
 
 footer {
   color: white;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.212);
   width: 100%;
 }
 
 /*  ARTICLE / MOVIE CARD */
 
 article {
-    border: green solid;
+    border: rgb(28, 28, 28) solid;
+    border-radius: 5px;
     margin: 5px;
-    display: flex;
-    
-    align-content: center;
-   width: 40%;
+    padding: 2px;
+    display: grid;
+    background-color: rgb(42, 41, 41);
+    width: 100%;
+    max-width: 200px;
+}
+img {
+    width: 100%;
+    border-radius: 5px;
+}
+article h2 {
+  font-size: small;
+  text-align: center;
+  
+}
+article p {
+  font-size: x-small;
 }
 
-img {
-    width: 40%;
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 90%;
+  margin:auto;
+
 }
+

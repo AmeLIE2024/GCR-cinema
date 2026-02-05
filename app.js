@@ -13,7 +13,7 @@ let genders = {} // on mettra ici un objet avec les id en key et les genres en v
 let API_KEY_URL = "" // on mettra ici le paramètre ?api_key='notre api key'
 
 /**
- * fonction qui récupère la clé api pour authentifier nos requête au site
+ * fonction qui récupère la clé api pour authentifier nos requêtes au site
  * @returns {string} apiKey
  */
 async function getApiKey(){
@@ -37,7 +37,7 @@ async function getData (url) {
 }
 
 /**
- * function de trie. trie par date les plus récentes au moins récentes
+ * function de trie. trie par date les plus récentes aux moins récentes
  * @param {*} a le premier argument à comparer
  * @param {*} b le deuxième argument à comparer
  * @returns 
@@ -129,6 +129,7 @@ async function createCard(movie){
     imageEl.setAttribute("alt",altImage)
     releaseDateEl.textContent = release_date
     durationEl.textContent = durationTime
+   
 
     const genres = getGenders(genre_ids)
     genderEl.textContent = genres.join(", ")
