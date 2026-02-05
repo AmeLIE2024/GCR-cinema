@@ -5,6 +5,8 @@
 
     })*/
 
+
+
 async function getApiKey(){
     const env = await fetch('./env')
     const apiKeyText = env.text()
@@ -12,3 +14,8 @@ async function getApiKey(){
 
     return API_KEY;
 }
+
+
+// Récupérer les films
+
+//Afficher les films
