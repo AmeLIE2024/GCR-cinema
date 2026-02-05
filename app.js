@@ -109,26 +109,29 @@ async function createCard(movie){
     const durationTime = convertInHour(movieDetails.runtime)
 
     const cardEl = createHtmlElement("article")
+    const linkEl = createHtmlElement("a")
     const titleEl = createHtmlElement("h2")
     const imageEl = createHtmlElement("img")
     const releaseDateEl = createHtmlElement("p")
     const durationEl = createHtmlElement ("p")
     const genderEl = createHtmlElement ("p")
     
-    cardEl.appendChild(imageEl)
-    cardEl.appendChild(titleEl)    
-    cardEl.appendChild(genderEl)
-    cardEl.appendChild(releaseDateEl)
-    cardEl.appendChild(durationEl)
+    cardEl.appendChild(linkEl)
+    linkEl.appendChild(imageEl)
+    linkEl.appendChild(titleEl)    
+    linkEl.appendChild(genderEl)
+    linkEl.appendChild(releaseDateEl)
+    linkEl.appendChild(durationEl)
     
 
+    linkEl.setAttribute("href",`/movie.html?id=${id}`)
     titleEl.textContent = title
     const IMAGE_BASE_URLMovie = `${IMAGE_BASE_URL}${poster_path}`
     imageEl.setAttribute("src",IMAGE_BASE_URLMovie)
     const altImage = `image du film ${title}`
     imageEl.setAttribute("alt",altImage)
-    releaseDateEl.textContent = release_date
-    durationEl.textContent = durationTime
+    releaseDateEl.textContent = `Date de sortie: ${release_date}`
+    durationEl.textContent = `durée: ${durationTime}`
    
 
     const genres = getGenders(genre_ids)
@@ -160,13 +163,13 @@ document.addEventListener("DOMContentLoaded", async () => {
            const cardMovie =  await createCard(movie)
            sectionEl.appendChild(cardMovie)
         }
-        
-    }
-    
+            
    
 
  
 } )
+
+
 
 // Afficher sur chaque carte le titre, l'affiche, la date de sortie, la durée et le genre
     // Créer les cartes
