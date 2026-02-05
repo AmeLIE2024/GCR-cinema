@@ -163,18 +163,7 @@ document.addEventListener("DOMContentLoaded", async () => {
            const cardMovie =  await createCard(movie)
            sectionEl.appendChild(cardMovie)
         }
-            
-   
-
- 
+    }
+      
 } )
 
-
-
-// Afficher sur chaque carte le titre, l'affiche, la date de sortie, la durée et le genre
-    // Créer les cartes
-    // Récupérer les infos d'un film
-    // Les afficher
-    // Insérer les cartes là où il faut
-
-// chaque carte doit être cliquable

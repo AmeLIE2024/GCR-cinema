@@ -1,9 +1,10 @@
 console.log(window.location.search);
 const idMovie = window.location.search.split("=").pop();
 const UrlAPI = "https://api.themoviedb.org/3/movie/";
+const GENDERS_BASE_URL = "https://api.themoviedb.org/3/genre/movie/list"
 const UrlMovie = UrlAPI + idMovie;
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500/";
-
+let genders = {} // on mettra ici un objet avec les id en key et les genres en valeur
 let API_KEY_PARAM = ""; // on mettra ici le paramètre ?api_key='notre api key'
 
 async function getData(url) {
@@ -24,6 +25,15 @@ async function getApiKey() {
   return apiKey;
 }
 
+function getObjectFrom(arr){
+    let genres = {}
+
+    for (const genre of arr) {
+        genres[genre.id] = genre.name
+    }
+
+    return genres
+}
 
 function convertInHour(timeInMinute){
     
@@ -97,7 +107,7 @@ async function createMovie(movie) {
     "src",
     `${IMAGE_BASE_URL}/${movie.poster_path}${API_KEY_PARAM}`,
   );
-  const altImageEl = document.querySelector("alt");
+  
   imgMovieEl.setAttribute("alt", "affiche du film");
 
   const paragrapEls = document.querySelectorAll("p");
@@ -121,9 +131,9 @@ async function createMovie(movie) {
   const recommendations = movieRecommendations.results;
 
   const recommendationsEl = document.querySelector(
-    ".film-recommendations > divr",
+    ".film-recommendations > div",
   );
-  console.log(recommendations);
+ 
   if (recommendations.length == 0) {
     const pEl = createHtmlElement("p");
     recommendationsEl.appendChild(pEl);
@@ -131,7 +141,6 @@ async function createMovie(movie) {
   } else {
     recommendations.map(async (recommendation) => {
       const recommendationCardEl = await createCard(recommendation);
-      console.log(recommendationCardEl);
       recommendationsEl.appendChild(recommendationCardEl);
     });
   }
@@ -140,9 +149,10 @@ async function createMovie(movie) {
 document.addEventListener("DOMContentLoaded", async () => {
   const apiKey = await getApiKey();
   const movie = await getData(`${UrlMovie}?api_key=${apiKey}`);
-
-  if (apiKey && movie) {
+  const movieGenres = await getData(`${GENDERS_BASE_URL}?api_key=${apiKey}`)
+  if (apiKey && movie && movieGenres) {
     API_KEY_PARAM = `?api_key=${apiKey}`;
+    genders = getObjectFrom(movieGenres.genres)
     console.log(movie);
     await createMovie(movie);
   }
