@@ -73,6 +73,10 @@ article {
     width: 100%;
     max-width: 200px;
 }
+
+article a{
+  color: white
+}
 img {
     width: 100%;
     border-radius: 5px;
@@ -95,3 +99,12 @@ section {
 
 }
 
+
+
+/*  PAGE MOVIE  */
+
+#movie{
+  width: 90%;
+  max-width: 500px;
+  margin: auto;
+}
